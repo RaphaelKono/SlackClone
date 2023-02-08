@@ -24,12 +24,7 @@ export class RegistrationComponent {
   usernameNewUser!: string;
 
   channelsForNewUser: string[] = [
-    '5hLrjtfk9DLbnnhb0eYt', // Channel Angular
-    'YR2mU8YFwcvJOctTnWvX', // Channel JavaScript
-    'kodrdqttATIub86aDGfN', // Channel Community
-    'nv5UkF7fatJpGwnpMaV3', // Channel HTML-CSS
-    'obQbIgSkigikiUjoUAg6', // Channel Allgemein
-    'vBN6AQ9viyozGCrqMJGJ', // Channel Bewerbung
+    'kQHnsPeO8ei3EZANXt2D' // Channel general
   ];
 
   constructor(private authService: AuthService, private formErrorService: FormErrorService, private firestoreService: FirestoreService) { }

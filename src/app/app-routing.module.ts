@@ -41,7 +41,7 @@ const routes: Routes = [
       { path: 'profile/:id', component: InfocardComponent, outlet: 'right' },
       { path: ':id/:id', component: ThreadBarComponent, outlet: 'right' },
       { path: 'bookmarks', component: BookmarksBarComponent, outlet: 'right' },
-      { path: '**', redirectTo: 'obQbIgSkigikiUjoUAg6' }
+      { path: '**', redirectTo: 'kQHnsPeO8ei3EZANXt2D' }
     ]
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }

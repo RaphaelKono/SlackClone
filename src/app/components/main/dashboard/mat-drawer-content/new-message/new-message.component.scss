@@ -1,3 +1,6 @@
 @import "../../../../../../assets/scss/colors.scss";
 @import "../../dashboard.component.scss";
 @import "../../../../../../assets/scss/mixin.scss";
+.input-container {
+    @include containerPosition(unset, center);
+}

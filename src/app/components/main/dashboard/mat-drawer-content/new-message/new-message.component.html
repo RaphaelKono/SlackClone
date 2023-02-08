@@ -11,7 +11,7 @@
     </header>
     <div class="header-container">
         <div class="search-container">
-            <div>
+            <div class="input-container">
                 <p>To:</p>
                 <div class="select-user-list" *ngFor="let user of usersToChat">
                     <div class="select-user">
@@ -29,22 +29,19 @@
                 </div>
             </div>
             <div class="search-container">
-                <input #searchUserField placeholder="Find user, space = all users" type="text" [ngModel]="mymodel"
-                    (ngModelChange)="valuechange($event)" />
+                <input #searchUserField placeholder="Find user, space = all users" type="text" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" />
             </div>
         </div>
     </div>
     <div class="body-container">
         <div class="search-user-list-container" *ngIf="searchUsers !== ''">
             <div class="search-user-list" *ngFor="let user of allUsers">
-                <div *ngIf="user.name.toLowerCase().includes(searchUsers.toLowerCase()) || searchUsers == ' ' "
-                    (click)="addUser(user, searchUserField)">
+                <div *ngIf="user.name.toLowerCase().includes(searchUsers.toLowerCase()) || searchUsers == ' ' " (click)="addUser(user, searchUserField)">
                     <img class="user-image" src="{{ user.src }}">
                     <p><strong>{{ user.name }}</strong></p>
                 </div>
             </div>
         </div>
     </div>
-    <app-message-editor *ngIf="usersToChat.length > 0" [collectionPath]="this.collPath"
-        [thread]="true"></app-message-editor>
+    <app-message-editor *ngIf="usersToChat.length > 0" [collectionPath]="this.collPath" [thread]="true"></app-message-editor>
 </div>

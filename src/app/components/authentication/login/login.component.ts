@@ -15,8 +15,8 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
   guest = {
-    email: 'slack@kevin-schimke.de',
-    password: '2Lbt^pHb^^>h+WeQeQXK'
+    email: 'slackcloneguest-20230208-1900@konopatzki.info',
+    password: 'dwDrNG!fd78C'
   }
 
   constructor(private authService: AuthService, private formErrorService: FormErrorService) { }
