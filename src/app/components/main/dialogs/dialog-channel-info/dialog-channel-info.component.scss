@@ -1,0 +1,82 @@
+@import "../../../../../assets/scss/colors.scss";
+@import "../../../../../assets/scss/mixin.scss";
+@import "../../dashboard/dashboard.component.scss";
+.dialog-channel-info-container {
+    background-color: $bg-color-main;
+    min-width: 320px;
+    position: relative;
+    .btn-close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        img {
+            height: 1.2rem;
+            width: 1.2rem;
+        }
+    }
+    .btn-edit {
+        top: 0;
+        color: $color-link;
+    }
+}
+
+.channel-info-title {
+    @include containerPosition(unset, center);
+    padding: 1rem;
+    img {
+        height: 1.2rem;
+        width: 1.2rem;
+        display: block;
+        margin-right: .2rem;
+    }
+}
+
+.dialog-tab {
+    background-color: $bg-color-hover;
+}
+
+.tab-info {
+    margin: 1rem;
+    background-color: $bg-color-main;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+    >div {
+        padding-inline: 1rem;
+    }
+    h3 {
+        padding-top: 1rem !important;
+        font-weight: 600 !important;
+    }
+    button {
+        margin-top: 1rem;
+    }
+}
+
+.leave-channel {
+    color: $bg-clr-red-accent;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.channel-id {
+    color: $color-secondary;
+    padding: 1rem;
+}
+
+.info-users {
+    @include containerPosition(center, unset, column);
+    padding: 1rem;
+    background-color: $bg-color-main;
+    mat-list-item {
+        cursor: pointer;
+        &:hover {
+            background-color: $bg-color-hover;
+        }
+    }
+}
+
+.img-icon {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

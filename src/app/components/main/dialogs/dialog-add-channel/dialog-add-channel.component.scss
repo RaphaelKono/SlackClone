@@ -1,0 +1,60 @@
+@import "../../../../../assets/scss/colors.scss";
+@import "../../../../../assets/scss/mixin.scss";
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+.dialog-add-channel {
+    border-radius: 1rem;
+    padding: 1.6rem;
+    background-color: $bg-dialog;
+    color: $color-main;
+    p {
+        color: $color-secondary;
+    }
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.set-locked-grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    margin-top: 2rem;
+    mat-slide-toggle {
+        @include containerPosition(flex-end, center);
+    }
+}
+
+.btn-close-dialog {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    background-color: unset;
+    img {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+
+.svg-lock {
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+@media (max-width: 500px) {
+    .dialog-add-channel {
+        border-radius: 0;
+        height: 100vh;
+        @include containerPosition(center, unset, column);
+    }
+}

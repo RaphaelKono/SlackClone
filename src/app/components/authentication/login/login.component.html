@@ -1,0 +1,46 @@
+<div class="authMain">
+    <img class="backgroundLoginImg" src="./../../../../assets/img/background_login.jpg">
+    <mat-card>
+        <mat-card-header>
+            <img class="placeholderIcon" src="./../../../../assets/icons/logo.png">
+            <h1>Slack</h1>
+        </mat-card-header>
+        <mat-card-subtitle>
+            Login
+        </mat-card-subtitle>
+        <form (ngSubmit)="loginAsUser()" [formGroup]="user">
+            <mat-card-content>
+                <div class="headerButtons">
+                    <button class="actionButton enable" mat-raised-button routerLink="/login">Login</button>
+                    <button class="actionButton disable" mat-raised-button routerLink="/registration">SignUp</button>
+                </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+                    <mat-error *ngIf="user.invalid">{{getErrorMessage('email')}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                    <mat-error *ngIf="user.invalid">{{getErrorMessage('password')}}</mat-error>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>
+                            <img *ngIf="hide" src="assets/svg/color_d1d2d3/visibility.svg">
+                            <img *ngIf="!hide" src="assets/svg/color_d1d2d3/visibility_off.svg">
+                        </mat-icon>
+                    </button>
+                </mat-form-field>
+                <div class="formLinks">
+                    <a routerLink="/reset">Forgot Password</a>
+                    <a (click)="loginAsGuest()">Guest Login</a>
+                </div>
+                <button [disabled]="!user.valid" class="actionButton enable submit" mat-raised-button>Login</button>
+            </mat-card-content>
+        </form>
+    </mat-card>
+    <div class="legalNotice">
+        <a routerLink="/imprint">Imprint</a>
+        <a routerLink="/dataprotection">Dataprotection</a>
+    </div>
+</div>

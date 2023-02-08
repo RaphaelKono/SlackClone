@@ -1,0 +1,221 @@
+@import "./colors.scss";
+.channels-accordion {
+    .mat-expansion-panel-body {
+        padding: 0 !important;
+        padding-bottom: 1rem !important;
+    }
+}
+
+.mat-body,
+.mat-body-2,
+.mat-typography .mat-body,
+.mat-typography .mat-body-2,
+.mat-typography {
+    font: 400 14px/20px Lato, sans-serif !important;
+}
+
+h2,
+.mat-typography h2 {
+    font: 500 20px/32px Lato, sans-serif !important;
+    font-size: 1.125rem !important;
+}
+
+.dialog-add-channel,
+.authMain,
+.edit-channel-container {
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: unset;
+    }
+    .mat-mdc-form-field-focus-overlay {
+        background-color: unset;
+    }
+}
+
+.edit-channel-container {
+    .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-floating-label {
+        color: $color-main !important;
+    }
+}
+
+// Color Themes for PushUp Components
+.success .mdc-snackbar__surface {
+    background-color: $background-card-success !important;
+}
+
+.error .mdc-snackbar__surface {
+    background-color: $background-card-error !important;
+}
+
+.info .mdc-snackbar__surface {
+    background-color: $background-card-info !important;
+}
+
+.mat-mdc-menu-panel.mat-mdc-menu-panel {
+    max-width: unset !important;
+}
+
+.angular-editor-toolbar,
+.angular-editor-toolbar-set,
+.angular-editor-button {
+    background-color: unset !important;
+    border: unset !important;
+    color: $color-main;
+}
+
+.angular-editor-toolbar {
+    border-radius: 10px;
+}
+
+.angular-editor {
+    display: flex;
+    flex-direction: column-reverse;
+    input {
+        display: none;
+    }
+}
+
+.send-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.angular-editor-textarea:after {
+    content: unset !important;
+    position: unset;
+    bottom: unset;
+    right: unset;
+    display: block;
+    width: unset;
+    height: unset;
+    cursor: unset;
+    background-color: unset;
+}
+
+.angular-editor .angular-editor-wrapper .angular-editor-placeholder {
+    padding-block: 0.8rem !important;
+    color: $color-secondary !important;
+    padding-inline: 1rem !important;
+}
+
+.angular-editor-textarea,
+.angular-editor-placeholder {
+    cursor: text;
+}
+
+.mat-drawer-container,
+.mat-drawer {
+    color: unset;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: unset !important;
+    border-radius: 1rem !important;
+}
+
+.mdc-tooltip__surface {
+    background-color: $bg-accent !important;
+}
+
+// .mat-drawer-backdrop.mat-drawer-shown {
+//     visibility: hidden !important;
+// }
+.mat-drawer-backdrop.mat-drawer-shown {
+    background-color: $bg-accent;
+    opacity: 0.5;
+}
+
+.mat-mdc-card-content {
+    background-color: $bg-color-main;
+}
+
+.bookmarks-container {
+    .mat-mdc-form-field {
+        width: 100%;
+    }
+}
+
+.emoji-mart-dark {
+    background-color: $bg-accent !important;
+}
+
+.emoji-mart-category-label span {
+    background-color: $bg-accent !important;
+}
+
+.authMain {
+    .mat-mdc-card {
+        background-color: $bg-accent;
+    }
+    .mat-mdc-card-content {
+        background-color: unset;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: $color-main;
+    -webkit-box-shadow: 0 0 0px 40rem $bg-accent inset;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+    color: unset;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+    border-color: $bg-clr-green-accent;
+}
+
+.mat-mdc-focus-indicator {
+    background: unset !important;
+}
+
+.mdc-tab__ripple::before,
+.mat-mdc-tab .mat-ripple-element,
+.mat-mdc-tab-header-pagination .mat-ripple-element,
+.mat-mdc-tab-link .mat-ripple-element {
+    background-color: unset !important;
+}
+
+.dialog-channel-info-container {
+    .mat-mdc-tab-body-content {
+        background: $bg-color-hover !important;
+    }
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: $border-button-main !important;
+}
+
+.emoji-mart-dark .emoji-mart-search input {
+    background-color: unset;
+}
+
+.mat-mdc-menu-content {
+    padding: 0 !important;
+}
+
+@media(max-width: 500px) {
+    .cdk-overlay-pane {
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        overflow: unset;
+    }
+    .mat-mdc-dialog-container .mdc-dialog__surface {
+        border-radius: 0 !important;
+    }
+    .mdc-dialog__surface {
+        overflow-y: unset !important;
+    }
+}
+
+@media(max-width: 350px) {
+    .emoji-mart-dark {
+        width: unset !important;
+    }
+}

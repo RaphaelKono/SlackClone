@@ -1,0 +1,43 @@
+<div class="add-member-container">
+    <div class="over-container">
+        <div class="header-container">
+            <div class="search-container">
+                <div class="d-flex align-items-center">
+                    <p>Add:</p>
+                    <div class="select-user-list" *ngFor="let user of newChannelMembers">
+                        <div class="select-user">
+                            <div>
+                                <img class="user-image" src="{{ user.src }}">
+                                <p><strong>{{ user.name }}</strong></p>
+                            </div>
+                            <div class="x-icon" (click)="deleteUserToChat(user)">
+                                <mat-icon>
+                                    <img class="header-menu-img" src="assets/svg/color_d1d2d3/x.svg">
+                                </mat-icon>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <input #searchUserField placeholder="Find user, space = all users" type="text" [ngModel]="mymodel"
+                        (ngModelChange)="valuechange($event)" />
+                </div>
+            </div>
+        </div>
+        <div class="body-container">
+            <div class="search-user-list-container" *ngIf="searchUsers !== ''">
+                <div class="search-user-list" *ngFor="let user of allUsers">
+                    <div *ngIf="user.name.toLowerCase().includes(searchUsers.toLowerCase()) || searchUsers == ' ' "
+                        (click)="addUser(user, searchUserField)">
+                        <img class="user-image" src="{{ user.src }}">
+                        <p><strong>{{ user.name }}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button mat-flat-button class="btn-unset btn-add-member" (click)="addMembers()">Add member(s)</button>
+        </div>
+    </div>
+</div>

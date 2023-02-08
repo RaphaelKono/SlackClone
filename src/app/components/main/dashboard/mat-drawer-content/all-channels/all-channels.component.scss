@@ -1,0 +1,83 @@
+@import "../../../../../../assets/scss/colors.scss";
+@import "../../dashboard.component.scss";
+@import "../../../../../../assets/scss/mixin.scss";
+.all-channels-header {
+    @include containerPosition(space-between, center);
+    width: 100%;
+}
+
+.bar-header {
+    .btn-create-channel {
+        &:hover {
+            border: 1px solid $color-main;
+            background-color: $bg-color-hover;
+        }
+    }
+}
+
+.all-channels-container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100% - 175px);
+}
+
+.channel-container {
+    padding-inline: 1.2rem;
+    position: relative;
+    .divider {
+        margin-top: .75rem;
+    }
+    &:hover {
+        background-color: $bg-color-hover;
+    }
+    .choice-btns {
+        display: none;
+    }
+    &:hover {
+        .choice-btns {
+            @include containerPosition(unset, center);
+            position: absolute;
+            right: 1rem;
+            top: 0;
+            height: 100%;
+            gap: .2rem;
+        }
+    }
+}
+
+.channel-info {
+    @include containerPosition(unset, center);
+    gap: .25rem;
+    padding-top: 0.5rem !important;
+    span {
+        color: $color-secondary;
+    }
+    img {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: unset;
+}
+
+.channel-joined {
+    @include containerPosition(unset, center);
+    color: $bg-clr-green-accent !important;
+    font-weight: 600;
+    gap: .2rem;
+    img {
+        height: 1rem;
+        width: 1rem;
+    }
+}
+
+.btn-create-channel-2 {
+    background-color: $bg-clr-green-accent;
+    &:hover {
+        filter: brightness(1.1);
+    }
+}

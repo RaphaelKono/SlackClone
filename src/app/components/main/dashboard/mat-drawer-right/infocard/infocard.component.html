@@ -1,0 +1,53 @@
+<header>
+    <h2>Profile</h2>
+    <button (click)="closeThread()" class="btn-unset close-thread-btn"><img
+            src="assets/svg/color_d1d2d3/x.svg"></button>
+</header>
+
+<div class="header-img">
+    <img [src]="user.src ? user.src : 'assets/img/user0.png'">
+</div>
+
+<div class="generalContent">
+    <div>
+        <h2>{{user.name}}</h2>
+        <a *ngIf="isLoggedInUser" (click)="openAccountSettings()">Edit Account Settings</a>
+    </div>
+    <div>
+        <img *ngIf="userActive" src="assets/svg/color_008000/online.svg">
+        <img *ngIf="!userActive" src="assets/svg/color_008000/offline.svg">
+        <span *ngIf="userActive">Online</span>
+        <span *ngIf="!userActive">Offline</span>
+    </div>
+    <div *ngIf="user.status || isLoggedInUser">
+        <img src="assets/svg/color_d1d2d3/pencil.svg">
+        <span *ngIf="user.status">{{ user.status }}</span>
+        <a *ngIf="!user.status && isLoggedInUser" (click)="openProfileSettings()">+Add status</a>
+    </div>
+    <div>
+        <img src="assets/svg/color_d1d2d3/clock.svg">
+        <span>{{user.lastLogin | date }} Local Time</span>
+    </div>
+</div>
+
+<div class="contactDetails">
+    <div>
+        <h3>Contact details</h3>
+        <a *ngIf="isLoggedInUser" (click)="openProfileSettings()">Edit Profile Settings</a>
+    </div>
+    <div>
+        <img src="assets/svg/color_d1d2d3/mail.svg">
+        <div class="contactItems">
+            <span>Mail address</span>
+            <a href="mailto:{{user.mail}}">{{user.mail}}</a>
+        </div>
+    </div>
+    <div *ngIf="user.phone || isLoggedInUser">
+        <img src="assets/svg/color_d1d2d3/phone.svg">
+        <div class="contactItems">
+            <span>Phone</span>
+            <a *ngIf="user.phone" href="tel:{{user.phone}}">{{user.phone}}</a>
+            <a *ngIf="!user.phone && isLoggedInUser" (click)="openProfileSettings()">+Add phone</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="dialog-add-channel relative">
+    <div class="d-flex">
+        <h2>Create <span *ngIf="locked">closed </span>channel</h2>
+        <button (click)="dialogRef.close()" class="btn-unset btn-close-dialog"><img
+                src="assets/svg/color_d1d2d3/x.svg"></button>
+    </div>
+    <p>Channels are used by your team to communicate. Ideally, they should be topic-related - #marketing, for example.
+    </p>
+    <form [formGroup]="channelForm" (ngSubmit)="onSubmit()">
+        <h3>Name</h3>
+        <mat-form-field>
+            <input formControlName="name" matInput placeholder="e.g. marketing" maxlength="20">
+            <div matPrefix style="color:d1d2d3" *ngIf="!locked">#</div>
+            <div matPrefix *ngIf="locked"><img src="assets/svg/color_d1d2d3/lock.svg" class="svg-lock"></div>
+        </mat-form-field>
+        <h3>Description (optional)</h3>
+        <mat-form-field>
+            <input formControlName="description" matInput>
+            <mat-hint>What is the channel about?</mat-hint>
+        </mat-form-field>
+
+        <div class="set-locked-grid">
+            <div>
+                <h4>Set "locked"</h4>
+                <p>When a channel becomes a closed channel, viewing and joining are by invitation only.</p>
+            </div>
+            <mat-slide-toggle formControlName="locked" (click)="toggleLock()"></mat-slide-toggle>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button mat-flat-button>Create</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<div></div>
+<button class="btn-unset btn-header-search" (click)="openNoFunction()">
+    <span>Search in Developer Akademie</span>
+    <div>
+        <img src="assets/svg/color_d1d2d3/filter.svg">
+        <img src="assets/svg/color_d1d2d3/search.svg">
+    </div>
+</button>
+<div class="header-right">
+    <img class="help-icon" src="assets/svg/color_d1d2d3/help.svg" (click)="openNoFunction()">
+    <button [matMenuTriggerFor]="beforeMenu" class="btn-unset">
+        <img [src]="currentUser.src ? currentUser.src : 'assets/img/user0.png'">
+    </button>
+</div>
+
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item (click)="openProfileSettings()">
+        <mat-icon>
+            <img class="header-menu-img" src="assets/svg/color_d1d2d3/account.svg">
+        </mat-icon>
+        Profile Settings
+    </button>
+    <button mat-menu-item (click)="openAccountSettings()">
+        <mat-icon>
+            <img class="header-menu-img" src="assets/svg/color_d1d2d3/settings.svg">
+        </mat-icon>
+        Account Settings
+    </button>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>
+            <img class="header-menu-img" src="assets/svg/color_d1d2d3/logout.svg">
+        </mat-icon>
+        Logout
+    </button>
+</mat-menu>

@@ -1,0 +1,45 @@
+@mixin containerPosition($x: unset, $y: unset, $rotate: unset) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    flex-direction: $rotate;
+}
+
+@mixin containerSize($height: unset, $width: unset) {
+    height: $height;
+    width: $width;
+}
+
+@mixin image($type, $height: auto, $width: auto) {
+    display: block;
+    object-fit: $type;
+    height: $height;
+    width: $width;
+}
+
+@mixin border($size, $type, $color, $radius: unset) {
+    border: $size $type $color;
+    border-radius: $radius;
+}
+
+@mixin noBorderWithRadius($radius) {
+    border: none;
+    border-radius: $radius;
+}
+
+@mixin positionAbsolute($top: unset, $right: unset, $bottom: unset, $left: unset) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin positionFixed($top: unset, $right: unset, $bottom: unset, $left: unset) {
+    position: fixed;
+    z-index: 999;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}

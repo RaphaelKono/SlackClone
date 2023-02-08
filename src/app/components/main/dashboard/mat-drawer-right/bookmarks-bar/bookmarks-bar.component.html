@@ -1,0 +1,16 @@
+<header>
+    <div class="bar-header">
+        <h2>Bookmarks</h2>
+    </div>
+    <button (click)="navService.closeRightBar(route.parent)" class="btn-unset close-thread-btn">
+        <img src="assets/svg/color_d1d2d3/x.svg">
+    </button>
+</header>
+
+<app-template-chatroom [data]="{
+    collPath: this.collPath,
+    threads: this.bookmarks,
+    currentUser: this.currentUser,
+    channelId: this.channelId,
+    isFirstLoaded: this.isFirstLoad
+}"></app-template-chatroom>

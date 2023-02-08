@@ -1,0 +1,333 @@
+@import "../../../../assets/scss/colors.scss";
+@import "../../../../assets/scss/mixin.scss";
+//for dashboard
+.main-header {
+    @include containerPosition(space-between, center);
+    height: 2.75rem;
+    background-color: $bg-accent;
+    border-bottom: 1px solid $border-button-main;
+    padding-inline: 1rem;
+}
+
+.main-container {
+    height: calc(100vh - 2.75rem - 1px);
+    background-color: $bg-color-main;
+}
+
+.workspace-bar {
+    width: clamp(12.5rem, 20%, 16.25rem);
+    background-color: $bg-color-secondary;
+    color: $color-secondary;
+}
+
+.thread-bar {
+    width: 35%;
+    background-color: $bg-color-main;
+}
+
+// for thread-bar and channel-bar
+header {
+    border-bottom: 1px solid $border-button-main;
+    @include containerPosition(space-between, center);
+    padding: .5rem 1rem;
+    max-height: 32px;
+    .bar-header {
+        @include containerPosition(unset, center);
+        width: 100%;
+        .header-headline {
+            @include containerPosition(unset, center);
+            @include noBorderWithRadius(.5rem);
+            padding-inline: .5rem;
+        }
+        h3 {
+            margin-right: 0.5rem !important;
+            font-size: 0.85rem;
+        }
+    }
+    .close-thread-btn {
+        border-radius: .5rem;
+        img {
+            @include image(cover, 1.5rem, 1.5rem);
+        }
+        &:hover {
+            background-color: $bg-color-hover;
+        }
+    }
+}
+
+.post-image {
+    @include image(cover);
+    @include border(1px, solid, $border-button-main, 1rem);
+    max-width: 200px;
+    max-height: 200px;
+    padding: 0.5rem;
+    display: block;
+}
+
+.channel-thread {
+    position: relative;
+    display: flex;
+    gap: .5rem;
+    padding: .5rem 1.5rem;
+    &:hover {
+        background-color: $bg-color-hover;
+        .thread-options {
+            display: flex;
+        }
+    }
+    .thread-options {
+        @include positionAbsolute(-1rem, 0);
+        @include border(1px, solid, $border-button-main, 0.5rem);
+        display: none;
+        background-color: $bg-color-main;
+        padding: .3rem 1rem;
+        gap: 1rem;
+        button {
+            img {
+                @include image(cover, 1.25rem, 1.25rem);
+            }
+        }
+    }
+    .channel-thread-img {
+        @include image(cover, 2.5rem, 2.5rem);
+        border-radius: .5rem;
+    }
+    .channel-thread-content {
+        word-break: break-word;
+        width: 100%;
+        .thread-headline {
+            display: flex;
+            gap: 0.6rem;
+            .span-time {
+                color: $color-secondary;
+                font-size: .725rem;
+            }
+        }
+        .btn-current-emoji {
+            background-color: $bg-color-light;
+            color: $color-main;
+            padding: 2px 4px;
+            border-radius: .5rem;
+            border: 1px solid transparent;
+            &:hover {
+                $bg-color: $bg-accent;
+                border: 1px solid $color-secondary;
+            }
+        }
+        .add-reaction {
+            @include containerSize(1rem, 1rem);
+            display: block;
+        }
+    }
+}
+
+.emoji-container {
+    display: flex;
+    gap: .3rem;
+}
+
+.workspace-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: $color-main;
+    cursor: pointer;
+    img {
+        display: block;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    &:hover {
+        background-color: $bg-color-hover;
+    }
+    margin-right: 1rem;
+}
+
+.private-header-imgs {
+    @include containerPosition(unset, center);
+    h2 {
+        margin-left: .5rem !important;
+    }
+}
+
+.img-header-partner {
+    @include image(cover, 1.5rem, 1.5rem);
+    @include noBorderWithRadius(4px);
+}
+
+.btn-create-channel {
+    color: $color-main;
+    font-weight: 700;
+    border: 1px solid $color-secondary;
+    border-radius: 4px;
+    padding: 0.4rem 1rem;
+    background-color: $bg-color-main;
+    &:hover {
+        filter: brightness(1.1);
+    }
+}
+
+.btn-main-channel {
+    background-color: $bg-clr-green-accent;
+    padding: 1rem 4rem;
+    font-size: 1.2rem;
+    &:hover {
+        filter: brightness(1.1);
+    }
+}
+
+.container-main-btn {
+    @include containerPosition(center);
+    margin-top: 1.5rem;
+}
+
+.over-container {
+    @include containerSize(unset, 100%);
+    min-height: calc(100vh - 100px);
+    padding-bottom: 50px;
+    background-color: $bg-color-main;
+    .header-container {
+        position: relative;
+        padding: 15px;
+        border-right: 1px solid $border-button-main;
+        h2 {
+            padding-bottom: 1rem;
+        }
+        .search-container {
+            @include containerPosition(unset, center);
+            font-size: 16px;
+            p {
+                margin: 0;
+                padding-right: 5px;
+            }
+            input {
+                width: 100%;
+                background-color: transparent;
+                outline: none;
+                border: none;
+                color: $color-main;
+            }
+        }
+    }
+}
+
+.body-container {
+    position: relative;
+}
+
+.select-user {
+    width: auto;
+    @include containerPosition(center, center);
+    background: $bg-color-hover;
+    padding: 2px;
+    border-radius: 10px;
+    div {
+        @include containerPosition(unset, center);
+        margin-right: 15px;
+        p {
+            margin: 0
+        }
+    }
+}
+
+.select-user-list {
+    @include containerPosition(unset, center);
+    margin: 0 10px;
+}
+
+.x-icon {
+    mat-icon {
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    &:hover {
+        mat-icon {
+            color: $color-main;
+        }
+        background-color: $bg-color-hover;
+        cursor: pointer;
+    }
+}
+
+.search-user-list-container {
+    @include positionAbsolute(-10px, 15px, unset, 15px);
+    @include border(1px, solid, $border-button-main);
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: var(--mdc-dialog-container-elevation, 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12));
+}
+
+.search-user-list {
+    &:hover {
+        background-color: $bg-color-hover;
+    }
+    div {
+        display: flex;
+        background-color: $bg-color-main;
+        align-items: center;
+        padding: 5px 0;
+        cursor: pointer;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.user-image {
+    @include image(cover, 24px, 24px);
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.div-btn-load-more {
+    @include containerPosition(center);
+    width: 100%;
+    padding-block: .5rem;
+    button {
+        color: #d1d2d3;
+        border: 1px solid $border-button-main;
+        border-radius: 5px;
+        padding: 10px;
+    }
+}
+
+.a-name {
+    color: $color-main;
+    &:hover {
+        text-decoration: underline 1px solid $color-main !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .max-title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 100px;
+        height: 2rem;
+    }
+    .workspace-bar {
+        width: 50%;
+    }
+    .thread-bar {
+        width: 50%;
+    }
+}
+
+@media(max-width: 720px) {
+    .thread-bar {
+        width: 100%;
+    }
+}
+
+@media(max-width: 500px) {
+    .workspace-bar {
+        width: 100%;
+        padding-inline: 1rem;
+    }
+    .btn-header-search {
+        display: none;
+    }
+}

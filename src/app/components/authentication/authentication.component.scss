@@ -1,0 +1,101 @@
+@import "./../../../assets/scss/colors.scss";
+@import "./../../../assets/scss/mixin.scss";
+.authMain {
+    @include containerSize(100vh, 100vw);
+    @include containerPosition(center, center);
+    background-color: $bg-accent;
+    .backgroundLoginImg {
+        @include image(cover, 100vh, 100vw);
+        @include positionAbsolute(0, 0);
+        overflow: hidden;
+        opacity: 0.4;
+        filter: blur(3px);
+    }
+    mat-card {
+        padding: 2.5rem;
+        max-width: 30rem;
+        min-width: 28rem;
+        border-radius: 1rem;
+        mat-card-header {
+            @include containerPosition(center, center);
+            padding-bottom: 1rem;
+            .placeholderIcon {
+                @include image(cover, 4rem, 4rem);
+                padding-right: 1rem;
+            }
+        }
+        mat-card-subtitle {
+            font-size: clamp(1.25rem, 0.704rem + 1.48vw, 2rem) !important;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .headerButtons {
+            @include containerPosition();
+            gap: 1rem;
+            padding-bottom: 1rem;
+        }
+        mat-form-field {
+            display: block !important;
+            button {
+                background-color: transparent;
+                border: none;
+            }
+        }
+        .formLinks {
+            @include containerPosition(space-between, center);
+        }
+        .actionButton {
+            @include noBorderWithRadius(4px);
+            @include containerSize(auto, 100%);
+            padding: 0.625rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.15rem;
+            outline: none;
+            &:hover {
+                opacity: 0.75;
+            }
+        }
+        .submit {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+        .enable {
+            @include border(1px, solid, $bg-clr-green-accent);
+            background-color: $bg-clr-green-accent;
+        }
+        .disable {
+            @include border(1px, solid, $border-button-disable);
+            background-color: $background-button-auth2;
+        }
+    }
+    a {
+        color: $link-auth-compontens;
+        &:hover {
+            color: $link-hover-auth-compontens;
+        }
+    }
+    .legalNotice {
+        @include positionAbsolute(unset, 2rem, 2rem);
+        z-index: 999;
+        font-size: 1.25rem;
+        a {
+            margin-left: 1rem;
+        }
+    }
+}
+
+//---------------------------------------------------------------// 
+//----------------------// Media Queries //----------------------// 
+//---------------------------------------------------------------// 
+@media (max-width: 450px) {
+    mat-card {
+        padding: 0 !important;
+        width: 100% !important;
+        min-width: unset !important;
+        border-radius: unset !important;
+        height: 100vh;
+        justify-content: center;
+    }
+}

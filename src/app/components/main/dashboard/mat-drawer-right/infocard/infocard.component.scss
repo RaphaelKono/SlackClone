@@ -1,0 +1,59 @@
+@import "./../../../../../../assets/scss/colors.scss";
+@import "./../../../../../../assets/scss/mixin.scss";
+@import "./../../dashboard.component.scss";
+
+header {
+    @include containerPosition(space-between);
+    padding: .5rem;
+    border-bottom: 1px solid $border-button-main;
+}
+
+.header-img {
+    @include containerPosition(center);
+    padding: .5rem;
+
+    img {
+        @include image(cover, 14rem, 14rem);
+        border-radius: .5rem;
+    }
+}
+
+.generalContent {
+    padding: .5rem;
+    border-bottom: 1px solid $border-button-main;
+
+    div {
+        @include containerPosition(unset, center);
+        padding: .5rem;
+
+        &:first-child {
+            justify-content: space-between;
+        }
+
+        img {
+            @include image(unset, 1.5rem, 1.5rem);
+            padding-right: .5rem;
+        }
+    }
+}
+
+.contactDetails {
+    padding: .5rem;
+
+    div {
+        @include containerPosition(unset, center);
+        padding: .5rem;
+
+        &:first-child {
+            justify-content: space-between;
+        }
+
+        img {
+            @include image(unset, 1.5rem, 1.5rem);
+        }
+
+        .contactItems {
+            @include containerPosition(center, unset, column);
+        }
+    }
+}

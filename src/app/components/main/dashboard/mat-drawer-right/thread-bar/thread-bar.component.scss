@@ -1,0 +1,38 @@
+@import "../../dashboard.component.scss";
+@import "../../../../../../assets/scss/mixin.scss";
+@import "../../../../../../assets/scss/colors.scss";
+.thread-separator {
+    div {
+        @include containerPosition(unset, center);
+        margin: .5rem 0;
+        padding-left: 1rem;
+        width: calc(100% - 40px);
+        span {
+            color: $color-secondary;
+            font-size: 0.75rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-right: 0.75rem;
+        }
+        hr {
+            width: 100%;
+            border-color: $border-button-main;
+        }
+    }
+}
+
+.body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100% - 200px);
+    padding-top: 2rem;
+}
+
+.channel-name {
+    color: $color-secondary;
+    margin: unset !important;
+}
+
+.header-headline {
+    padding-inline: 1rem;
+}

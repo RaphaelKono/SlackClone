@@ -1,0 +1,34 @@
+<mat-card id="chatcard">
+    <angular-editor [(ngModel)]="message" [config]="editorConfig">
+        <ng-template #customButtons>
+            <ae-toolbar-set>
+                <ae-button iconClass="fa fa-smile-o" title="Emoijs" [matMenuTriggerFor]="emoij">
+                </ae-button>
+                <ae-button iconClass="fa fa-sharp fa-image" (buttonClick)="fInput.click()">
+                </ae-button>
+            </ae-toolbar-set>
+        </ng-template>
+    </angular-editor>
+    <input #fInput type="file" style="visibility: hidden;" (change)="upload($event)" accept=".png,.jpg">
+
+    <div class="upload-image-container" *ngIf="imageURL">
+        <div>
+            <img [src]="imageURL" class="upload-img">
+            <div (click)="discardUpload()" class="close"><img src="assets/svg/color_d1d2d3/x.svg"></div>
+        </div>
+    </div>
+
+    <div class="under">
+        <button (click)="getMessage()" class="send-btn" *ngIf="(message || imageURL)">
+            <img src="assets/svg/color_939295/send.svg" alt="">
+        </button>
+    </div>
+
+    <mat-menu #emoij="matMenu" xPosition="before">
+        <emoji-mart appClickStopPropagation (emojiSelect)="handleClick($event)" [i18n]="{
+        search: 'Recherche',
+        categories: { search: 'Résultats de recherche', recent: 'Récents' }}">
+        </emoji-mart>
+    </mat-menu>
+
+</mat-card>

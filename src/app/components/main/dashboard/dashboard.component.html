@@ -1,0 +1,13 @@
+<!-- main component for content / import dialog input component -->
+<app-dashboard-header class="main-header"></app-dashboard-header>
+<mat-drawer-container class="main-container" [hasBackdrop]="mobileQuery.matches">
+    <mat-drawer [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" #workspaceBar class="workspace-bar">
+        <app-workspace-bar></app-workspace-bar>
+    </mat-drawer>
+    <mat-drawer closed mode="side" position="end" class="thread-bar" #threadBar>
+        <router-outlet name="right"></router-outlet>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

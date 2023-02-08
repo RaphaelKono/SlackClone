@@ -1,0 +1,106 @@
+@import "./../../../../../assets/scss/colors.scss";
+
+.userCard {
+    mat-card {
+
+        mat-card-header {
+            background-color: #1A1D21;
+            padding-bottom: 16px;
+            align-items: flex-end;
+
+            img {
+                object-fit: cover;
+                height: 75px;
+                width: 75px;
+                margin-right: 16px;
+                border-radius: 8px;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    font-size: 1.5rem;
+                    margin-bottom: 8px;
+
+                    &:first-child::first-letter {
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+
+        mat-panel-title {
+            mat-icon {
+                margin-right: 8px;
+            }
+        }
+
+        .inputStatus {
+            display: flex;
+            align-items: center;
+
+            button {
+                width: auto;
+            }
+        }
+
+        mat-form-field {
+            margin-top: 16px;
+        }
+
+        button {
+            width: 100%;
+            cursor: pointer;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.15rem;
+            border-radius: 4px;
+            outline: none;
+            border: none;
+
+            &:hover {
+                opacity: 0.75;
+            }
+        }
+
+        .actionButton {
+            background-color: $button-color-1;
+        }
+
+        .deleteButton {
+            background-color: $button-color-2;
+        }
+    }
+}
+
+.mat-mdc-form-field {
+    width: 100% !important;
+}
+
+mat-icon {
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+mat-expansion-panel-header {
+    padding: 0 0 0 24px !important;
+}
+
+mat-panel-description {
+    justify-content: end;
+}
+
+mat-expansion-panel {
+    margin: 8px 0 !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

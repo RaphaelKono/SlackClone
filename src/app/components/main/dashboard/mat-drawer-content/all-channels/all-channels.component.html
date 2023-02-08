@@ -1,0 +1,39 @@
+<div style="height:100%;">
+    <header class="bar-header">
+        <button (click)="toggleLeftSidebar()" class="workspace-btn">
+                <img *ngIf="leftSideBar" src="assets/svg/color_d1d2d3/left_panel_open.svg">
+                <img *ngIf="!leftSideBar" src="assets/svg/color_d1d2d3/left_panel_close.svg">
+            </button>
+        <div class="all-channels-header">
+            <h2>All Channels</h2>
+            <button class="btn-unset btn-create-channel" (click)="openDialog()">Create channel</button>
+        </div>
+    </header>
+
+    <div class="all-channels-container">
+        <a class="channel-container" *ngFor="let channel of channels; let c = index" [routerLink]="isActive ? ['/client/' + channel.channelId] : null">
+            <div class="channel-info">
+                <h2 *ngIf="!channel.locked">#</h2>
+                <img *ngIf="channel.locked" src="assets/svg/color_d1d2d3/lock.svg">
+                <h2>{{channel.channelName}}</h2>
+            </div>
+            <div class="channel-info">
+                <span *ngIf="isInChannel(channel)" class="channel-joined"><img src="assets/svg/color_007a5a/done.svg">joined</span>
+                <span *ngIf="isInChannel(channel)">·</span>
+                <span>{{channel.users.length}} members</span>
+                <span *ngIf="channel.description">·</span>
+                <span>{{channel.description}}</span>
+            </div>
+            <div (mouseenter)="isActive = false;" (mouseleave)="isActive = true;" class="choice-btns">
+                <button *ngIf="!isInChannel(channel)" class="btn-unset btn-create-channel" [routerLink]="['/client/' + channel.channelId]">View</button>
+                <button *ngIf="!isInChannel(channel)" class="btn-unset btn-create-channel btn-create-channel-2" (click)="addUserToChannel(c)">Join</button>
+                <button *ngIf="isInChannel(channel)" class="btn-unset btn-create-channel" (click)="removeUserFromChannel(c)">Leave</button>
+            </div>
+            <mat-divider class="divider"></mat-divider>
+        </a>
+    </div>
+    <div class="container-main-btn">
+        <button class="btn-unset btn-create-channel btn-main-channel" (click)="openDialog()">Create channel</button>
+    </div>
+
+</div>

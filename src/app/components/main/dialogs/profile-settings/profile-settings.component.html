@@ -1,0 +1,84 @@
+<div class="userCard">
+    <mat-card>
+        <mat-card-header>
+            <img [src]="userService.currentUser.src ? userService.currentUser.src : 'assets/img/user0.png'">
+            <div>
+                <span>{{userService.currentUser.name}}</span>
+                <button class="btn btn-default" style="cursor: pointer;" flow-btn (click)="fInput.click()">Edit
+                    Picture</button>
+                <input #fInput type="file" style="visibility: hidden; position: absolute;" (change)="upload($event)">
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-expansion-panel [expanded]="step === 0" (click)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon><img src="assets/svg/color_d1d2d3/account.svg"></mat-icon>
+                        Username
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon *ngIf="step !== 0"><img src="assets/svg/color_d1d2d3/expand_more.svg"></mat-icon>
+                        <mat-icon *ngIf="step === 0"><img src="assets/svg/color_d1d2d3/expand_less.svg"></mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="updateUserName()" [formGroup]="username">
+                    <mat-form-field appClickStopPropagation appearance="fill">
+                        <mat-label>Enter new username</mat-label>
+                        <input matInput formControlName="username" [(ngModel)]="currentUser.name" required>
+                        <mat-error *ngIf="username.invalid">{{getErrorMessage(username,'username')}}</mat-error>
+                    </mat-form-field>
+                    <button [disabled]="!username.valid" class="actionButton" mat-raised-button>Save new
+                        username</button>
+                </form>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (click)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon><img src="assets/svg/color_d1d2d3/rate_review.svg"></mat-icon>
+                        Status
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon *ngIf="step !== 1"><img src="assets/svg/color_d1d2d3/expand_more.svg"></mat-icon>
+                        <mat-icon *ngIf="step === 1"><img src="assets/svg/color_d1d2d3/expand_less.svg"></mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div appClickStopPropagation class="inputStatus">
+                    <button class="btn-unset" [matMenuTriggerFor]="emoji">
+                        <img src="assets/svg/color_d1d2d3/add_reaction.svg">
+                        <mat-menu #emoji="matMenu" xPosition="before">
+                            <emoji-mart appClickStopPropagation (emojiSelect)="handleClick($event)" [i18n]="{
+                              search: 'Recherche',
+                              categories: { search: 'Résultats de recherche', recent: 'Récents' }}">
+                            </emoji-mart>
+                        </mat-menu>
+                    </button>
+                    <mat-form-field appClickStopPropagation appearance="fill">
+                        <mat-label>Enter your status</mat-label>
+                        <input matInput #status [(ngModel)]="statusValue">
+                    </mat-form-field>
+                </div>
+                <button (click)="updateStatus()" class="actionButton" mat-raised-button>Save status</button>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 2" (click)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon><img src="assets/svg/color_d1d2d3/phone.svg"></mat-icon>
+                        Phone
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon *ngIf="step !== 2"><img src="assets/svg/color_d1d2d3/expand_more.svg"></mat-icon>
+                        <mat-icon *ngIf="step === 2"><img src="assets/svg/color_d1d2d3/expand_less.svg"></mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field appClickStopPropagation appearance="fill">
+                    <mat-label>Enter your phone number</mat-label>
+                    <input #phone type="number" [(ngModel)]="currentUser.phone" matInput>
+                </mat-form-field>
+                <button (click)="updatePhone()" class="actionButton" mat-raised-button>Save phone</button>
+            </mat-expansion-panel>
+
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,21 @@
+<div class="edit-channel-container">
+    <button class="btn-unset btn-close" (click)="dialogRef.close()"><img src="assets/svg/color_d1d2d3/x.svg"></button>
+    <h2>Edit channel</h2>
+    <form [formGroup]="editChannelForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Topic</mat-label>
+                <textarea formControlName="topic" matInput value="{{channel.topic}}" placeholder="Add a topic"></textarea>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea formControlName="description" matInput value="{{channel.description}}" placeholder="What is the channel about?"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button mat-flat-button class="btn-unset">Edit</button>
+        </div>
+    </form>
+</div>

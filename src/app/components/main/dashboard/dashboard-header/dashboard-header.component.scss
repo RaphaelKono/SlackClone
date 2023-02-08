@@ -1,0 +1,43 @@
+@import "../../../../../assets/scss/colors.scss";
+@import "../../../../../assets/scss/mixin.scss";
+.btn-header-search {
+    @include containerPosition(space-between);
+    @include border(1px, solid, $border-button-dashboard-header, 0.33rem);
+    color: $color-main;
+    background-color: $bg-button-dashboard-header;
+    padding: .4rem .8rem;
+    min-width: 300px;
+    div {
+        display: flex
+    }
+    img {
+        @include image(cover, 1rem, 1rem);
+    }
+    &:hover {
+        @include border(1px, solid, $color-main, 0.33rem);
+    }
+}
+
+.header-right {
+    @include containerPosition(unset, center);
+    gap: 1.5rem;
+    .help-icon {
+        @include image(cover, 1.5rem, 1.5rem);
+    }
+    button {
+        border-radius: 4px;
+        img {
+            @include image(cover, 2rem, 2rem);
+        }
+    }
+}
+
+.header-menu-img {
+    @include containerSize(100%, 100%);
+}
+
+@media(max-width: 500px) {
+    .btn-header-search {
+        display: none;
+    }
+}

@@ -1,0 +1,21 @@
+@import "../../../../../assets/scss/colors.scss";
+@import "../../../../../assets/scss/mixin.scss";
+@import "../../dashboard/dashboard.component.scss";
+.over-container {
+    min-height: unset;
+}
+
+.add-member-container {
+    min-width: 280px;
+    min-height: 280px;
+    background-color: $bg-color-main;
+    padding: 1rem;
+    position: relative;
+}
+
+.btn-add-member {
+    background-color: $bg-clr-green-accent !important;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}

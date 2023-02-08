@@ -1,0 +1,75 @@
+@import "../../../../../assets/scss/colors.scss";
+@import "../../../../../assets/scss/mixin.scss";
+
+.bookmarks-container {
+    background-color: $bg-color-main;
+    @include containerPosition(center, unset, column);
+    padding: 1rem;
+
+    input {
+        outline: none;
+        border-radius: 5px;
+        width: 100%;
+
+        &::placeholder {
+            font-style: italic;
+            font-size: 14px;
+        }
+    }
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 3px;
+}
+
+mat-form-field-wrapper {
+    margin: 0;
+}
+
+
+.bootom-container {
+    display: flex;
+
+    .bookmark-text {
+        background-color: $bg-color-hover;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+}
+
+.title {
+    padding: 5px;
+}
+
+.close {
+    cursor: pointer;
+    padding: 5px;
+
+    &:hover {
+        background-color: $bg-color-hover;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+    }
+
+    ;
+}
+
+button {
+    background-color: $bg-clr-green-accent !important;
+}
+
+.button {
+    margin-right: 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-container {
+    p {
+        font-size: 20px;
+    }
+}

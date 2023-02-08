@@ -1,0 +1,54 @@
+<div class="dialog-channel-info-container">
+    <button class="btn-unset btn-close" (click)="dialogRef.close()"><img src="assets/svg/color_d1d2d3/x.svg"></button>
+    <div class="channel-info-title">
+        <h2 *ngIf="!channel.locked">#</h2>
+        <div *ngIf="channel.locked"><img src="assets/svg/color_d1d2d3/lock.svg"></div>
+        <h2 class="max-title">{{channel.channelName}}</h2>
+    </div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" [selectedIndex]="selectNo">
+        <mat-tab label="About">
+            <div class="dialog-tab">
+                <div class="tab-info">
+                    <div class="relative">
+                        <button class="btn-unset btn-close btn-edit" (click)="openEditor()">Edit</button>
+                        <h3>Topic</h3>
+                        <p>{{channel.topic}}</p>
+                        <p *ngIf="!channel.topic">Add a topic</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="relative">
+                        <button class="btn-unset btn-close btn-edit" (click)="openEditor()">Edit</button>
+                        <h3>Description</h3>
+                        <p>{{channel.description}}</p>
+                        <p *ngIf="!channel.description">Add a description</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div>
+                        <h3>Created by</h3>
+                        <p>{{channel.creator | username}} on {{channel.creationDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}}</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div>
+                        <button class="btn-unset leave-channel" (click)="leaveChannel()">Leave Channel</button>
+                    </div>
+                </div>
+                <p class="channel-id">Channel ID: {{channel.channelId}}</p>
+            </div>
+        </mat-tab>
+        <mat-tab label="Members">
+            <div class="info-users">
+                <mat-list>
+                    <mat-list-item (click)="openAddMember()">
+                        <mat-icon matListItemIcon><img class="img-icon" src="assets/svg/color_d1d2d3/add_person.svg"></mat-icon>
+                        <div matListItemTitle>Add people</div>
+                    </mat-list-item>
+                    <mat-list-item *ngFor="let user of channel.users" (click)="showProfile(user)">
+                        <mat-icon matListItemIcon><img class="img-icon" [src]="user | imgSrc: currentDataService.users"></mat-icon>
+                        <div matListItemTitle>{{user | username}}</div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="channel-messages" #scrollMe (scroll)="scrolled()">
+    <div class="channel-thread" *ngFor="let thread of data.threads; let t = index">
+        <div class="thread-options">
+            <button class="btn-unset" [matMenuTriggerFor]="emoji">
+                <img src="assets/svg/color_d1d2d3/add_reaction.svg" matTooltip="Add reaction" matTooltipPosition="above" />
+            </button>
+            <button *ngIf="isInChannel()" class="btn-unset" (click)="openThread(thread)" matTooltip="Open Threads in another bar." matTooltipPosition="above">
+                <img src="assets/svg/color_d1d2d3/threads.svg" />
+            </button>
+            <button *ngIf="!data.collPath.includes('bookmarks')" class="btn-unset" (click)="addBookmark(thread)" matTooltip="Open Bookmarks in another bar." matTooltipPosition="above">
+                <img src="assets/svg/color_d1d2d3/bookmark.svg" />
+            </button>
+            <button *ngIf="data.collPath.includes('bookmarks')" class="btn-unset" (click)="deleteBookmark(thread.id)" matTooltip="Delete bookmark" matTooltipPosition="above">
+                <img src="assets/svg/color_d1d2d3/bookmark_full.svg">
+            </button>
+        </div>
+        <mat-menu #emoji="matMenu" xPosition="before">
+            <ng-template matMenuContent>
+                <emoji-mart appClickStopPropagation (emojiSelect)="evaluateThread($event.emoji.native,t)" [i18n]="{
+                search: 'Recherche',
+                categories: { search: 'Research results', recent: 'Recently' }}"></emoji-mart>
+            </ng-template>
+        </mat-menu>
+        <a *ngIf="!(thread.userId | canClick)"><img [src]="thread.userId | imgSrc: currentDataService.users" class="channel-thread-img" /></a>
+        <a (click)="navService.navToRightBar('profile/'+ thread.userId,route.parent);" *ngIf="(thread.userId | canClick)"><img [src]="thread.userId | imgSrc: currentDataService.users" class="channel-thread-img" /></a>
+        <div class="channel-thread-content">
+            <!-- This div gets *ngFor for all thread (load max 12 thread and scroll up for older thread) -->
+            <p class="thread-headline">
+                <a class="pointer a-name" *ngIf="!(thread.userId | canClick)">
+                    <b>{{thread.userId | username }}</b>
+                </a>
+                <a class="pointer a-name" *ngIf="thread.userId | canClick" (click)="navService.navToRightBar('profile/'+ thread.userId,route.parent);"><b>{{ thread.userId | username }}</b></a>
+                <span *ngIf="thread.creationDate" class="span-time">{{thread.creationDate | date}}</span>
+            </p>
+            <p [innerHTML]="thread.message"></p>
+            <button class="btn-unset" (click)="openBox(thread.img)" *ngIf="thread.img">
+                <img [src]="thread.img" alt="" class="post-image">
+            </button>
+            <p class="emoji-container" *ngIf="thread.reactions.length > 0">
+                <button class="btn-unset btn-current-emoji" *ngFor="let reaction of thread.reactions; let u = index" (click)="evaluateThread(reaction.id, t)" matTooltip="{{reaction.users | username}} reacted like this." matTooltipPosition="above">
+                    <span>{{reaction.id}}</span>
+                    <span>{{reaction.users.length}}</span>
+                </button>
+                <button class="btn-unset btn-current-emoji" [matMenuTriggerFor]="emoji">
+                    <img class="add-reaction" src="assets/svg/color_d1d2d3/add_reaction.svg"></button>
+            </p>
+            <div *ngIf="isInChannel() && thread.comments > 0">
+                <button class="d-flex go-to-thread" (click)="openThread(thread)">
+                    <div class="d-flex first-comments" *ngFor="let commentUser of thread.users">
+                        <!-- This div gets *ngFor for the first five different users commenting. If more, fifth img will get overlay of "+1" e.g.-->
+                        <img [src]="commentUser | imgSrc: currentDataService.users" />
+                    </div>
+                    <span class="channel-thread-comments" *ngIf="thread.comments < 2">
+                        {{thread.comments}} reply
+                    </span>
+                    <span class="channel-thread-comments" *ngIf="thread.comments > 1">
+                        {{thread.comments}} replies
+                    </span>
+                    <span class="time-of-last-answer">
+                        <span *ngIf="thread.comments > 1">Last reply</span>
+                        {{thread.lastComment | periodOfTime}} ago
+                    </span>
+                    <span class="show-thread">Show thread</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

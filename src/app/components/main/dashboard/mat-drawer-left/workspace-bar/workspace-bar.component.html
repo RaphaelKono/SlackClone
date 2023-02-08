@@ -1,0 +1,82 @@
+<header class="bar-header">
+    <h2>Developer Akademie</h2>
+</header>
+
+<ul class="upper-list">
+    <!-- <li (click)="openNoFunction()"><img src="assets/svg/color_939295/threads.svg" />Threads</li> -->
+    <li>
+        <a (click)="navigateToRoute('/client/newMessage')"><img src="assets/svg/color_939295/message.svg" />Direct
+            messages
+        </a>
+    </li>
+    <!-- <li (click)="openNoFunction()"><img src="assets/svg/color_939295/at.svg" />Mentions and reactions</li> -->
+    <!-- <li (click)="openNoFunction()"><img src="assets/svg/color_939295/send.svg" />Drafts and sent</li> -->
+
+    <li>
+        <a (click)="navigateToBookmarks()"><img src="assets/svg/color_939295/bookmark.svg" />Bookmarks</a>
+    </li>
+
+    <li>
+        <a (click)="navigateToRoute('/client/allChannels')"><img src="assets/svg/color_939295/all-channels.svg" />All
+            channels
+        </a>
+    </li>
+</ul>
+
+<mat-divider></mat-divider>
+
+<ul>
+    <li>
+        <mat-accordion class="channels-accordion">
+            <mat-expansion-panel hideToggle [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="channels-header-title">
+                            <span>Channels</span>
+                            <button appClickStopPropagation (click)="openDialog()" class="btn-unset btn-add-channel">
+                                <img src="assets/svg/color_939295/add.svg" />
+                            </button>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+    <li *ngFor="let channel of channels">
+        <a (click)="navigateToRoute('/client/' + channel.channelId)">
+            <span *ngIf="!channel.locked">#</span>
+            <img *ngIf="channel.locked" src="assets/svg/color_939295/lock.svg"> {{ channel.channelName }}
+        </a>
+    </li>
+    </mat-expansion-panel>
+    </mat-accordion>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <mat-accordion class="channels-accordion">
+            <mat-expansion-panel hideToggle [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="channels-header-title">
+                            <span>Direct Messages</span>
+                            <button appClickStopPropagation class="btn-unset btn-add-channel"
+                                (click)="navigateToRoute('/client/newMessage')">
+                                <img src="assets/svg/color_939295/add.svg" />
+                            </button>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+    <li *ngFor="let private of privates">
+        <a (click)="navigateToRoute('/client/' + private.channelId)">
+            <div style="position: relative;">
+                <img [src]="private.users | imgSrc: currentData.users">
+                <img *ngIf="private.users.length < 3 && isUserActive(private.users, currentData.users)"
+                    src="assets/svg/color_008000/online.svg" class="online-status">
+                <img *ngIf="private.users.length < 3 && !isUserActive(private.users, currentData.users)"
+                    src="assets/svg/color_008000/offline.svg" class="online-status">
+            </div> {{ private.users | messagePartner}}
+        </a>
+    </li>
+    </mat-expansion-panel>
+    </mat-accordion>
+    </li>
+</ul>

@@ -1,0 +1,34 @@
+<form class="bookmarks-container">
+
+    <div class="header-container">
+        <p class="title">Add bookmark to this channel</p>
+        <p class="close" (click)="dialogRef.close()">X</p>
+    </div>
+    <div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Link</mat-label>
+                <input [(ngModel)]="link" name="link" matInput placeholder="https://devoloper-academy.com" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input [(ngModel)]="linkName" name="link" matInput placeholder="Title..." required>
+            </mat-form-field>
+        </div>
+    </div>
+    <div>
+        <div class="bottom-container">
+            <div class="bookmark-text">
+                <p>Bookmark important links for your team</p>
+                <p>Add bookmarks for links you want to find quickly. All channel members can see the bookmarks you add.
+                </p>
+            </div>
+        </div>
+        <div class="button">
+            <button mat-flat-button [disabled]="link.length == 0 || linkName.length == 0" (click)="addBookmark()">Add
+                bookmark</button>
+        </div>
+    </div>
+</form>

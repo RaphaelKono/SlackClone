@@ -1,0 +1,28 @@
+<div #userCard class="userCard">
+    <mat-card>
+        <mat-card-header>
+            <img [src]="userService.currentUser.src ? userService.currentUser.src : 'assets/img/user0.png'">
+            <div>
+                <span>{{currentUser.name}}</span>
+                <span>Please enter your password to edit your settings</span>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <form (ngSubmit)="reauthenticate()" [formGroup]="password">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                    <mat-error *ngIf="password.invalid">{{getErrorMessage(password,'password')}}</mat-error>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>
+                            <img *ngIf="hide" src="assets/svg/color_d1d2d3/visibility.svg">
+                            <img *ngIf="!hide" src="assets/svg/color_d1d2d3/visibility_off.svg">
+                        </mat-icon>
+                    </button>
+                </mat-form-field>
+                <button [disabled]="!password.valid" class="actionButton" mat-raised-button>Submit</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
