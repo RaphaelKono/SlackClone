@@ -24,6 +24,9 @@
                 @include image(cover, 4rem, 4rem);
                 padding-right: .5rem;
             }
+            img {
+                padding-left: 1rem;
+            }
         }
         mat-card-subtitle {
             font-size: clamp(1.25rem, 0.704rem + 1.48vw, 2rem) !important;
@@ -99,5 +102,14 @@
         border-radius: unset !important;
         height: 100vh;
         justify-content: center;
+    }
+    .authMain .legalNotice {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        margin-top: 1rem;
+    }
+    mat-card-subtitle {
+        display: none;
     }
 }
