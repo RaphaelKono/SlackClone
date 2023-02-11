@@ -1,18 +1,19 @@
-<div style="height:100%;">
-    <header>
-        <div class="bar-header">
-            <button (click)="toggleLeftSidebar()" class="workspace-btn">
+<div class="bar-layout">
+    <div class="top">
+        <header>
+            <div class="bar-header">
+                <button (click)="toggleLeftSidebar()" class="workspace-btn">
                 <img *ngIf="leftSideBar" src="assets/svg/color_d1d2d3/left_panel_open.svg">
                 <img *ngIf="!leftSideBar" src="assets/svg/color_d1d2d3/left_panel_close.svg">
             </button>
-            <div>
-                <button class="workspace-btn header-headline" *ngIf="channel.category == 'channel'" (click)="openDialogChannelInfo(0)">
+                <div>
+                    <button class="workspace-btn header-headline" *ngIf="channel.category == 'channel'" (click)="openDialogChannelInfo(0)">
                     <h2 *ngIf="!channel.locked">#</h2>
                     <div *ngIf="channel.locked"><img src="assets/svg/color_d1d2d3/lock.svg"></div>
                     <h2 class="max-title">{{channel.channelName}}</h2>
                 </button>
 
-                <button class="workspace-btn header-headline" *ngIf="channel.category == 'private'">
+                    <button class="workspace-btn header-headline" *ngIf="channel.category == 'private'">
                     <div class="private-header-imgs">
                         <div *ngFor="let user of channel.users">
                             <img *ngIf="user != currentUser.id" [src]="user | imgSrc: currentDataService.users" alt=""
@@ -21,35 +22,38 @@
                         <h2>{{channel.users | messagePartner}}</h2>
                     </div>
                 </button>
+                </div>
             </div>
-        </div>
-        <div class="header-right">
-            <div class="channel-members" *ngIf="channel.category == 'channel'">
-                <button class="btn-unset btn-members" (click)="openDialogChannelInfo(1)">
+            <div class="header-right">
+                <div class="channel-members" *ngIf="channel.category == 'channel'">
+                    <button class="btn-unset btn-members" (click)="openDialogChannelInfo(1)">
                     <div *ngFor="let user of channel.users.slice(0, mobileQuery.matches ? 1 : 4);">
                         <img *ngIf="user != currentUser.id" [src]="user | imgSrc: currentDataService.users" alt=""
                             class="img-header-partner" />
                     </div>
                     <span>{{channel.users.length}}</span>
                 </button>
-                <button class="btn-unset btn-add-member" (click)="openAddMember()">
+                    <button class="btn-unset btn-add-member" (click)="openAddMember()">
                     <img class="img-header-partner" src="assets/svg/color_d1d2d3/add_person.svg" />
                 </button>
+                </div>
+            </div>
+
+        </header>
+        <div class="add-bookmark-container">
+            <div *ngFor="let bookmark of bookmarks">
+                <a class="bookmark" target="_blank" href="{{bookmark.link}}">
+                    <img src="assets/svg/color_d1d2d3/bookmark.svg">{{bookmark.name}}
+                </a>
+                <img src="assets/svg/color_d1d2d3/x.svg" (click)="deleteBookmark(bookmark.id)">
+            </div>
+            <div (click)="openBookmarks(channelId)">
+                <p><img src="assets\svg\color_d1d2d3\add.svg">Add a bookmark</p>
             </div>
         </div>
-    </header>
-
-    <div class="add-bookmark-container">
-        <div *ngFor="let bookmark of bookmarks">
-            <a class="bookmark" target="_blank" href="{{bookmark.link}}">
-                <img src="assets/svg/color_d1d2d3/bookmark.svg">{{bookmark.name}}
-            </a>
-            <img src="assets/svg/color_d1d2d3/x.svg" (click)="deleteBookmark(bookmark.id)">
-        </div>
-        <div (click)="openBookmarks(channelId)">
-            <p><img src="assets\svg\color_d1d2d3\add.svg">Add a bookmark</p>
-        </div>
     </div>
+
+
 
     <div class="div-btn-load-more" *ngIf="moreToLoad">
         <button class="btn-unset" (click)="nextQuery()">Load More</button>
@@ -61,7 +65,8 @@
         currentUser: this.currentUser,
         channelId: this.channelId,
         isFirstLoaded: this.isFirstLoad
-    }"></app-template-chatroom>
+    }" style="flex: 1;
+    overflow: auto;"></app-template-chatroom>
     <app-message-editor *ngIf="isInChannel()" [collectionPath]="collPath" [thread]="true"></app-message-editor>
     <div *ngIf="!isInChannel()" class="container-main-btn">
         <button class="btn-unset btn-create-channel btn-main-channel" (click)="joinChannel()">Join</button>

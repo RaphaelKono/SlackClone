@@ -25,6 +25,11 @@
     background-color: $bg-color-main;
 }
 
+.bar-layout {
+    @include containerPosition(space-between, unset, column);
+    height: 100%;
+}
+
 // for thread-bar and channel-bar
 header {
     border-bottom: 1px solid $border-button-main;
@@ -53,6 +58,11 @@ header {
             background-color: $bg-color-hover;
         }
     }
+}
+
+.channel-messages {
+    height: calc(100% - 2rem);
+    padding-top: 2rem;
 }
 
 .post-image {

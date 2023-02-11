@@ -141,7 +141,6 @@ export class MessageEditorComponent {
 
   getDownloadLink(uploadTask: any){
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      this.userService.currentUser.src = downloadURL;
       this.imageURL = downloadURL;
       this.pushupMessage.openPushupMessage('success', 'Upload success');
     });

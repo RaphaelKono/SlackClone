@@ -1,7 +1,6 @@
 @import "../../../../../../assets/scss/colors.scss";
 @import "../../dashboard.component.scss";
 @import "../../../../../../assets/scss/mixin.scss";
-
 .show-thread {
     display: none;
 }
@@ -21,37 +20,25 @@
     padding-block: .2rem;
     padding-inline: 1rem;
     color: $color-main;
-
     img {
         @include image(cover, 1.5rem, 1.5rem);
         border-radius: 0.25rem;
     }
-
     &:hover {
         @include border(1px, solid, $border-button-main);
         background-color: $bg-color-main;
-
         .time-of-last-answer {
             display: none;
         }
-
         .show-thread {
             display: unset;
         }
     }
 }
 
-.channel-messages {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: calc(100% - 300px);
-    padding-top: 2rem;
-}
-
 .channel-members {
     @include containerPosition(unset, center);
     @include border(1px, solid, $border-button-main, .5rem);
-
     button {
         &:hover {
             background-color: $bg-color-hover;
@@ -66,12 +53,10 @@
     gap: 1px;
     border-right: 1px solid $border-button-main;
     padding-block: .3rem;
-
     img {
         box-shadow: 0 0 0 2px $bg-color-main;
         margin-right: -0.25rem;
     }
-
     span {
         color: $color-main;
         font-weight: 700;
@@ -93,28 +78,22 @@
     border-bottom: 1px solid $border-button-main;
     padding-block: .75rem;
     padding-inline: 1rem;
-
     img {
         @include image(cover, 1rem, 1rem);
     }
-
     div {
         @include containerPosition(unset, center);
-
         &:hover {
             background-color: $bg-color-hover;
             border-radius: 5px;
             cursor: pointer;
         }
-
         a {
             @include containerPosition(flex, center);
-
             img {
                 margin-right: 0.25rem
             }
         }
-
         p {
             @include containerPosition(unset, center);
             margin: 0 !important;
