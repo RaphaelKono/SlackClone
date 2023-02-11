@@ -30,6 +30,7 @@ export class MainComponent {
     this.users = [];
     users.forEach((user: any) => {
       user.lastLogin = user.lastLogin.toDate();
+      console.log(user);
       this.users.push(user);
     });
     this.currentDataService.setUsers(this.users);

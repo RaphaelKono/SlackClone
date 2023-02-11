@@ -17,17 +17,18 @@
         min-width: 28rem;
         border-radius: 1rem;
         mat-card-header {
-            @include containerPosition(center, center);
+            @include containerPosition(unset, center);
+            padding: unset;
             padding-bottom: 1rem;
             .placeholderIcon {
                 @include image(cover, 4rem, 4rem);
-                padding-right: 1rem;
+                padding-right: .5rem;
             }
         }
         mat-card-subtitle {
             font-size: clamp(1.25rem, 0.704rem + 1.48vw, 2rem) !important;
             text-align: center;
-            margin-bottom: 2.5rem;
+            padding-block: 2rem;
         }
         .headerButtons {
             @include containerPosition();
@@ -43,10 +44,11 @@
         }
         .formLinks {
             @include containerPosition(space-between, center);
+            padding-block: 1rem;
         }
         .actionButton {
-            @include noBorderWithRadius(4px);
             @include containerSize(auto, 100%);
+            border-radius: 4px !important;
             padding: 0.625rem;
             font-size: 1rem;
             font-weight: 600;

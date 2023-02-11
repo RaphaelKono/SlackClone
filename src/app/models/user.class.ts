@@ -20,7 +20,6 @@ export class User {
 
     toJson() {
         return {
-            id: this.id,
             name: this.name,
             mail: this.mail,
             phone: this.phone,
